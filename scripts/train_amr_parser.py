@@ -20,7 +20,6 @@ from text_utils import ucca_to_dict, amr_to_dict
 
 device = torch.device("cuda") if torch.cuda.is_available() else torch.device("cpu")
 
-
 def train(trn_dataloader,
           model,
           optimizer,
@@ -32,7 +31,6 @@ def train(trn_dataloader,
           eval_freq,
           early_stop_patience,
           grad_accum_steps):
-
 
     start_step = 0
 
@@ -198,12 +196,12 @@ if __name__ == '__main__':
     parser.add_argument('--eval_batch_size', type=int, default=8, help='batch_size')
     parser.add_argument('--grad_accum_steps', type=int, default=30, help='gradient_accumulation_steps')
     parser.add_argument('--dropout', type=float, default=0.3, help='dropout rate')
-    parser.add_argument('--num_training_steps', type=int, default=300000, help='a total number of training steps')
+    parser.add_argument('--num_training_steps', type=int, default=100000, help='a total number of training steps')
     parser.add_argument('--eval_freq', type=int, default=1000, help='evaluate every n steps')
     parser.add_argument('--num_warmup_steps', type=int, default=2500, help='warmup steps')
     parser.add_argument('--model_name', type=str, default="facebook/mbart-large-cc25", help='model name')
     parser.add_argument('--early_stop_patience', type=int, default=25000, help='early stop patience')
-    parser.add_argument('--multi_or_bi', type=str, choices=["multilingual", "bilingual"], default="multilingual", help='multilingual or bilingual')
+    parser.add_argument('--multi_or_bi', type=str, choices=["multilingual", "bilingual"], default="bilingual", help='multilingual or bilingual')
 
     args = parser.parse_args()
 
